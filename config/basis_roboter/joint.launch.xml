@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+
+    <node name="basis_joint_state_publisher" pkg="joint_state_publisher" exec="joint_state_publisher" output="log" respawn="false" respawn_delay="0" namespace="basis_roboter">
+
+        <!-- <remap from="/basis_roboter/robot_description" to="/robot_description"/> -->
+        <!-- <remap from="/joint_states" to="/basis_roboter/joint_states"/> -->
+
+        <param name="source_list" value="['/service_roboter/x_axis','/service_roboter/y_axis','/service_roboter/z_axis']"/>
+        <param name="rate" value="50.0"/>  
+    </node>
+
+
+</launch>
