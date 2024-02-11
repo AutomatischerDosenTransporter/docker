@@ -2,35 +2,6 @@ version: '3.0'
 
 services:
 
-
-  ros-http-source:
-    image: nginx:alpine
-    container_name: ros-http-source
-    volumes:
-      - ./config/fileserver/default.conf:/etc/nginx/conf.d/default.conf
-      - ./config/fileserver/shared:/usr/share/nginx/html
-      - C:\\Users\\danie\\Nextcloud\\Huhan\\Unity\\ADT-Survival\\Assets\\adt_urdf:/usr/share/nginx/html/urdf
-    ports:
-      - 80:80
-    networks:
-      - ros
-
-  # ros-listener:
-  #   image: registry.nussi.net/ros:foxy-desktop
-  #   container_name: ros-listener
-  #   restart: unless-stopped
-  #   command: ros2 run demo_nodes_cpp listener
-  #   networks:
-  #     - ros
-
-  # ros-talker:
-  #   image: registry.nussi.net/ros:foxy-desktop
-  #   container_name: ros-talker
-  #   restart: unless-stopped
-  #   command: ros2 run demo_nodes_cpp talker
-  #   networks:
-  #     - ros
-
   ros-unity:
     image: registry.nussi.net/ros:unity
     container_name: ros-unity
@@ -78,7 +49,7 @@ services:
   #   networks:
   #     - ros
   #   volumes:
-  #     - C:\\Users\\danie\\Nextcloud\\Huhan\\Unity\\ADT-Survival\\Assets\\adt_urdf:/urdf
+  #     - ../urdf:/urdf
   #     - ./config:/config
   
   # ros-basis-joint-state:
@@ -88,7 +59,7 @@ services:
   #   networks:
   #     - ros
   #   volumes:
-  #     - C:\\Users\\danie\\Nextcloud\\Huhan\\Unity\\ADT-Survival\\Assets\\adt_urdf:/urdf
+  #     - ../urdf:/urdf
   #     - ./config:/config
   
   ros-service-roboter-state:
@@ -98,7 +69,7 @@ services:
     networks:
       - ros
     volumes:
-      - C:\\Users\\danie\\Nextcloud\\Huhan\\Unity\\ADT-Survival\\Assets\\adt_urdf:/urdf
+      - ../urdf:/urdf
       - ./config:/config
   
   ros-service-joint-state:
@@ -108,7 +79,7 @@ services:
     networks:
       - ros
     volumes:
-      - C:\\Users\\danie\\Nextcloud\\Huhan\\Unity\\ADT-Survival\\Assets\\adt_urdf:/urdf
+      - ../urdf:/urdf
       - ./config:/config
 
   ros-service-twist-mux:
@@ -127,7 +98,7 @@ services:
     networks:
       - ros
     volumes:
-      - C:\\Users\\danie\\Nextcloud\\Huhan\\Unity\\ADT-Survival\\Assets\\adt_urdf:/urdf
+      - ../urdf:/urdf
       - ./config:/config
 
 
