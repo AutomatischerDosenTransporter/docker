@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  ros-rplidar:
+    image: ros:humble
+    devices:
+      - /dev/ttyUSB0
+    command: >
+      apt upadte -y &&
+      apt install -y ros-humble-rplidar-ros &&
+      ros2 run rplidar_ros rplidar_composition --ros-args -p serial_port:=/dev/ttyUSB0 -p frame_id:=lidar -p angle_compensate:=true -p scan_mode:=Standard
+
+  ros-foxglove-studio:
+    image: ghcr.io/foxglove/studio:latest
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+  
+
+  ros-foxglove-bridge:
+    image: registry.nussi.net/ros:foxglove-bridge
+    ports:
+      - 8765:8765
+
+  
+  ros-static-transform:
+    image: ros:humble
+    command: ros2 run tf2_ros static_transform_publisher 0 0 0 0.0 0.0 0.0 base_link lidar
